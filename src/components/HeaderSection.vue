@@ -17,12 +17,12 @@
                 <li>
                     <router-link to="/team">中心团队</router-link>
                     <ul class="dropdown">
-                        <li><router-link to="/team/members">团队构成</router-link></li>
-                        <li><router-link to="/team/intro">人员介绍</router-link></li>
+                        <li><router-link to="/team/members#teamstructure">团队构成</router-link></li>
+                        <li><router-link to="/team/intro#teachingresources">人员介绍</router-link></li>
                     </ul>
                 </li>
                 <li><router-link to="/labs">实验室构成</router-link></li>
-                <li><router-link to="/teachers">教师简介</router-link></li>
+                <!-- <li><router-link to="/teachers">教师简介</router-link></li> -->
                 <li><router-link to="/rules">规章制度</router-link></li>
                 <li>
                     <router-link to="/teaching">实践教学</router-link>
@@ -133,7 +133,7 @@ onUnmounted(() => {
 }
 
 .nav-bar ul li {
-    margin: 0 15px;
+    margin: 0 20px;
     position: relative;
 }
 
