@@ -11,7 +11,7 @@
             :style="{ maxHeight: isOpen.results ? '1000px' : '0' }">
             <div class="app">
                 <aside class="sidebar">
-                    <h2 class="sidebar-title">成果展示</h2>
+                    <h2 class="sidebar-title">年度总结</h2>
                     <ul>
                         <li v-for="(article, index) in articles" :key="index"
                             :class="{ active: currentIndex === index }" @click="selectArticle(index)">
