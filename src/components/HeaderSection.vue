@@ -4,10 +4,17 @@
         <div :class="['top-bar', { 'solid': isScrolled, 'hidden': isLogoHidden }]">
 
 
-            <div class="logo">美育实验教学中心</div>
+            <div class="logo">
+                <div class = "school">
+                    <a href="http://www.hrbeu.edu.cn/" target="_blank">
+                        <img src="../assets/校徽及标准字（反白）.png" alt="哈尔滨工程大学" class="school-name school-name-img" />
+                    </a>
+                    <div class=" school-name-font">美育实验教学中心</div>
+                </div>
+            </div>
             <div class="title"><img src="../assets/基地文字.png" alt="国家大学生文化素质教育基地" class="school-logo" /></div>
             <div class="school-link">
-                <a href="http://www.hrbeu.edu.cn/" target="_blank" >
+                <a href="http://www.hrbeu.edu.cn/" target="_blank">
                     <img src="../assets/校徽及标准字（反白）.png" alt="哈尔滨工程大学官网" class="school-logo" />
                 </a>
             </div>
@@ -26,7 +33,7 @@
                     </ul>
                 </li>
                 <li><router-link to="/labs#labs">实验室构成</router-link></li>
-                <li><router-link to="/rules">规章制度</router-link></li>
+                <li><router-link to="/rules#rules">规章制度</router-link></li>
                 <li @mouseenter="showDropdown($event)" @mouseleave="hideDropdown($event)">
                     <router-link to="/teaching#teaching">实践教学</router-link>
                 </li>
@@ -96,6 +103,12 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.school{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 .school-link {
     text-align: center;
     margin-top: 20px;
@@ -128,6 +141,7 @@ onUnmounted(() => {
 .top-bar .logo {
     font-size: 1.8rem;
     font-weight: 600;
+    font-family: 'KaiTi', '楷体', 'SimKai', serif;
 }
 
 .title {
@@ -197,7 +211,7 @@ onUnmounted(() => {
 .nav-bar ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 5px;
     display: block;
 }
@@ -241,32 +255,61 @@ onUnmounted(() => {
     color: lightblue;
 }
 
+.school-name {
+    display: none;
+
+}
+
 @media (max-width: 768px) {
+    .school-name-font{
+        margin-bottom: 8px;
+    }
     .top-bar {
         height: 5vh;
         flex-direction: column;
         align-items: center;
         padding: 10px 0;
     }
-        .school-logo {
-            display:none;
-            width: 40%;
-            height: auto;
-            cursor: pointer;
-        }
+
+    .school-name {
+        display: inline;
+    }
+
+    .school-name-img {
+        height: 2.5rem;
+    }
+
+    .school-logo {
+        display: none;
+        width: 40%;
+        height: auto;
+        cursor: pointer;
+    }
+
+
+    .top-bar .logo {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
 
     .logo {
-        font-size: 1rem;
+        font-size: 0.5rem;
     }
-        /* 隐藏下拉框 */
-        .nav-bar ul li .dropdown {
-            display: none !important;
-        }
+
+    /* 隐藏下拉框 */
+    .nav-bar ul li .dropdown {
+        display: none !important;
+    }
+
     .title img {
         width: 50%;
         max-width: 500px;
         margin-top: 10px;
         opacity: 0.8;
+    }
+
+    .title {
+        font-size: 1rem;
     }
 
     .nav-bar {
@@ -287,7 +330,7 @@ onUnmounted(() => {
     }
 
     .nav-bar ul li a {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
 </style>

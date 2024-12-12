@@ -1,30 +1,47 @@
 <template>
-    <div class="container">
-        <h2>实验教学中心2019-2024年出版教材及书籍</h2>
-        <table class="books-table">
-            <thead>
-                <tr>
-                    <th>教材或书籍名称</th>
-                    <th>主编姓名</th>
-                    <th>本人排名</th>
-                    <th>出版社及出版时间</th>
-                    <th>该教材或书籍获奖情况</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(book, index) in books" :key="index">
-                    <td>{{ book.name }}</td>
-                    <td>{{ book.editor }}</td>
-                    <td>{{ book.rank }}</td>
-                    <td>{{ book.publisher }}</td>
-                    <td>{{ book.award }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="content-section" id="books">
+        <h2 @click="toggleTableVisibility" class="toggle-title">
+            实验教学中心2019-2024年出版教材及书籍
+        </h2>
+        <!-- 展开收起图标 -->
+        <div class="toggle-container" @click="toggleTableVisibility">
+            <i :class="['toggle-icon', isTableVisible ? 'expanded' : '']"></i>
+        </div>
+
+        <!-- 展开后的表格内容 -->
+        <div v-show="isTableVisible" class="table-container" :style="{ maxHeight: isTableVisible ? '1000px' : '0' }">
+            <table class="books-table">
+                <thead>
+                    <tr>
+                        <th>教材或书籍名称</th>
+                        <th>主编姓名</th>
+                        <th>本人排名</th>
+                        <th>出版社及出版时间</th>
+                        <th>该教材或书籍获奖情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(book, index) in books" :key="index">
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.editor }}</td>
+                        <td>{{ book.rank }}</td>
+                        <td>{{ book.publisher }}</td>
+                        <td>{{ book.award }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const isTableVisible = ref(false);
+
+const toggleTableVisibility = () => {
+    isTableVisible.value = !isTableVisible.value;
+};
 // 数据部分：将教材数据以数组对象的形式存储
 const books = [
     { name: '《音乐基本常识概论》', editor: '刘蓓蓓', rank: '第一主编', publisher: '黑龙江教育出版社 2020.12', award: '2019年度校级教材建设' },
@@ -39,12 +56,67 @@ const books = [
 </script>
 
 <style scoped>
+/* 样式 */
+.content-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.content-section:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #222;
+    cursor: pointer;
+}
+
+.toggle-container {
+    margin: 10px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.toggle-container i {
+    width: 20px;
+    height: 20px;
+    border-left: 3px solid #007BFF;
+    border-bottom: 3px solid #007BFF;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.toggle-container .expanded {
+    transform: rotate(180deg);
+}
+
+.table-container {
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 15px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
 /* 页面背景与字体颜色设置 */
 .container {
     padding: 20px;
-    background-color: #1a1d2f;
+    background-color: #f9f9f9;
     /* 深蓝背景 */
-    color: white;
+    color: #333;
     font-family: 'Arial', sans-serif;
     border-radius: 8px;
 }
@@ -53,6 +125,7 @@ h2 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    color: #222;
 }
 
 .books-table {
@@ -68,26 +141,27 @@ h2 {
     padding: 10px;
     text-align: center;
     /* 内容居中 */
-    border: 1px solid #444;
+    border: 1px solid #ccc;
 }
 
 .books-table th {
-    background-color: #282c3b;
+    background-color: #f2f2f2;
     /* 深灰背景 */
+            color: #555;
 }
 
 .books-table tr:nth-child(even) {
-    background-color: #2f3446;
+    background-color: #ffffff;
     /* 每行偶数行背景 */
 }
 
 .books-table tr:nth-child(odd) {
-    background-color: #353c52;
+    background-color: #f7f7f7;
     /* 每行奇数行背景 */
 }
 
 .books-table td {
-    color: #d4d7e1;
+    color: #333;
     /* 浅灰色字体 */
 }
 

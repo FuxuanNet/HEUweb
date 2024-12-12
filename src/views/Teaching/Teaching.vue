@@ -145,8 +145,8 @@ const performanceLinks = [
 }
 
 .blue-background {
-    background-color: rgb(111, 115, 131);
-    color: white;
+    background-color: rgb(197, 199, 209);
+    color: #003366;
 }
 
 .light-background {

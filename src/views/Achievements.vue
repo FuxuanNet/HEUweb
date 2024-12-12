@@ -1,41 +1,56 @@
 <template>
-
     <div class="content-section" id="results">
         <h2>年度总结</h2>
         <p>回顾一年中的艺术教育成果与精彩活动。</p>
-        <br>
-
-        <div class="app">
-            <aside class="sidebar">
-                <h2 class="sidebar-title">成果展示</h2>
-                <ul>
-                    <li v-for="(article, index) in articles" :key="index" :class="{ active: currentIndex === index }"
-                        @click="selectArticle(index)">
-                        {{ article.title }}
-                    </li>
-                </ul>
-            </aside>
-
-            <main class="content">
-                <article>
-                    <h1 class="article-title">{{ currentArticle.title }}</h1>
-                    <!-- 使用 v-html 渲染 HTML -->
-                    <div class="article-body" v-html="currentArticle.body"></div>
-                </article>
-            </main>
+        <div class="toggle-container" @click="toggleSection('results')">
+            <i :class="['toggle-icon', isOpen.results ? 'expanded' : '']"></i>
         </div>
+        <br>
+        <!-- 使用 transition 和 max-height 进行展开收起动画 -->
+        <div :class="['content-details', { expanded: isOpen.results }]"
+            :style="{ maxHeight: isOpen.results ? '1000px' : '0' }">
+            <div class="app">
+                <aside class="sidebar">
+                    <h2 class="sidebar-title">成果展示</h2>
+                    <ul>
+                        <li v-for="(article, index) in articles" :key="index"
+                            :class="{ active: currentIndex === index }" @click="selectArticle(index)">
+                            {{ article.title }}
+                        </li>
+                    </ul>
+                </aside>
+
+                <main class="content">
+                    <article>
+                        <h1 class="article-title">{{ currentArticle.title }}</h1>
+                        <div class="article-body" v-html="currentArticle.body"></div>
+                    </article>
+                </main>
+            </div>
+        </div>
+
     </div>
+
     <div class="content-section" id="summary">
         <h2>教学成果</h2>
         <p>展示中心在艺术教学方面的突出成就与贡献。</p>
+
+        <div class="toggle-container" @click="toggleSection('summary')">
+            <i :class="['toggle-icon', isOpen.summary ? 'expanded' : '']"></i>
+        </div>
+
+        <!-- 使用 transition 和 max-height 进行展开收起动画 -->
+        <div :class="['content-details', { expanded: isOpen.summary }]"
+            :style="{ maxHeight: isOpen.summary ? '1000px' : '0' }">
+            <BooksTable />
+            <PapersTable />
+            <LPapersTables />
+            <AwardsTable />
+            <LAwardsTable />
+            <SAwardstable />
+            <ProjectTable />
+        </div>
     </div>
-    <BooksTable />
-    <PapersTable />
-    <LPapersTables />
-    <AwardsTable />
-    <LAwardsTable />
-    <SAwardstable />
-    <ProjectTable />
 </template>
 
 <script setup>
@@ -47,6 +62,14 @@ import LAwardsTable from '@/components/Excels/LAwardsTable.vue';
 import SAwardstable from '@/components/Excels/SAwardstable.vue';
 import ProjectTable from '@/components/Excels/ProjectTable.vue';
 import { ref, computed } from 'vue';
+
+const isOpen = ref({
+    results: false,
+    summary: false,
+});
+const toggleSection = (section) => {
+    isOpen.value[section] = !isOpen.value[section];
+};
 
 const articles = ref([
     {
@@ -326,6 +349,92 @@ const selectArticle = (index) => {
 </script>
 
 <style scoped>
+/* 样式 */
+.content-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.content-section:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    color: #003366;
+}
+
+.content-section p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 展开/收起的过渡效果 */
+.content-details {
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0 15px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    overflow: hidden;
+    max-height: 0;
+    /* 默认隐藏 */
+}
+
+.content-details.expanded {
+    overflow-y: auto;
+    /* 启用垂直滚动 */
+    max-height: 600px;
+    /* 限制最大高度，防止页面过长 */
+        transition: max-height 0.3s ease-in-out;
+}
+
+.toggle-container {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 10px auto;
+}
+
+.toggle-container i {
+    width: 20px;
+    height: 20px;
+    border-left: 3px solid #007BFF;
+    border-bottom: 3px solid #007BFF;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.toggle-container .expanded {
+    transform: rotate(180deg);
+}
+
+/* 对于按钮的样式 */
+.view-details-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.view-details-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
 .content-section {
     padding: 50px 20px;
     background-color: #f9f9f9;

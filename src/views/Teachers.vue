@@ -1,30 +1,43 @@
 <template>
     <div class="content-section" id="teamstructure">
-        <h2>团队构成</h2>
+        <h2>国家大学生文化素质教育基地美育教学团队</h2>
         <p>团队由经验丰富的教师和艺术家组成，为学生提供专业指导与支持。</p>
+        <div class="toggle-container" @click="toggleSection('teamstructure')">
+            <i :class="['toggle-icon', isOpen.teamstructure ? 'expanded' : '']"></i>
+        </div>
+        <div :class="['content-details', { expanded: isOpen.teamstructure }]"
+            :style="{ maxHeight: isOpen.teamstructure ? '1000px' : '0' }">
+            <TeamsTables />
+        </div>
     </div>
+
     <div class="content-section" id="teachingresources">
         <h2>师资力量</h2>
         <p>拥有一支专业、富有经验的教师团队，为学生提供高质量的艺术教育。</p>
-    </div>
-    <div class="teachers-container">
-        <div class="teacher-box" v-for="(teacher, index) in teachers" :key="index"
-            :class="{ 'expanded': teacher.showDetails }">
-            <div class="teacher-info">
-                <!-- 头像和姓名横向排列 -->
-                <img :src="getAvatarUrl(teacher.avatar)" alt="照片" class="teacher-avatar" />
-                <h3 class="teacher-name">{{ teacher.name }}</h3>
+        <div class="toggle-container" @click="toggleSection('teachingresources')">
+            <i :class="['toggle-icon', isOpen.teachingresources ? 'expanded' : '']"></i>
+        </div>
+        <div :class="['content-details', { expanded: isOpen.teachingresources }]"
+            :style="{ maxHeight: isOpen.teachingresources ? '1000px' : '0' }">
+            <div class="teachers-container">
+                <div class="teacher-box" v-for="(teacher, index) in teachers" :key="index"
+                    :class="{ 'expanded': teacher.showDetails }">
+                    <div class="teacher-info">
+                        <img :src="getAvatarUrl(teacher.avatar)" alt="照片" class="teacher-avatar" />
+                        <h3 class="teacher-name">{{ teacher.name }}</h3>
+                    </div>
+                    <div v-if="teacher.showDetails" class="teacher-details" v-html="teacher.details"></div>
+                    <button @click="toggleDetails(index)" class="view-details-btn">
+                        查看详细/简介
+                    </button>
+                </div>
             </div>
-            <!-- 详细介绍 -->
-            <div v-if="teacher.showDetails" class="teacher-details" v-html="teacher.details"></div>
-            <!-- 按钮放在右下角，带立体效果 -->
-            <button @click="toggleDetails(index)" class="view-details-btn">
-                查看详细/简介
-            </button>
         </div>
     </div>
 </template>
+
 <script setup>
+import TeamsTables from '../components/Excels/TeamsTable.vue'
 import { ref } from 'vue';
 
 // 定义教师数据
@@ -67,7 +80,8 @@ const teachers = ref([
     <li>作为《中华古筝文化》课程负责人，该课程被评为教育部一流课程，入选教育部“汉语桥”国际中文教育视频课程资源库。</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '郭实', avatar: '郭实.png', details: `<div>
   <p>校国家大学生文化素质教育基地美育教研室器乐专业教师，副教授。</p>
@@ -78,7 +92,8 @@ const teachers = ref([
     <li>荣获黑龙江省大学生艺术展演优秀指导教师等多项荣誉称号。</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '李晓民', avatar: '李晓民.png', details: `<div>
   <p>毕业于哈尔滨师范大学艺术学院/油画专业/文学学术硕士</p>
@@ -88,7 +103,8 @@ const teachers = ref([
   <p>现为中国美术家协会会员</p>
   <p>黑龙江省美术家协会会员</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '刘蓓蓓', avatar: '刘蓓蓓.png', details: `<div>
   <p>校本科生院国家大学生文化素质教育基地美育教研室主任，副教授，研究方向——大学美育与钢琴教育。</p>
@@ -104,7 +120,8 @@ const teachers = ref([
     <li>主持及参与科研课题30余项。</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '刘玢', avatar: '刘玢.png', details: `<div>
   <p>哈尔滨工程大学本科生院美育教研室教师，黑龙江省音乐家协会会员。</p>
@@ -118,7 +135,8 @@ const teachers = ref([
     <li>哈尔滨工程大学第四届青年教师教学竞赛文科组二等奖。</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '鹿洋', avatar: '鹿洋.png', details: `<div>
   <p>中国舞蹈家协会会员，黑龙江省舞蹈家协会会员，中国舞蹈家协会中国舞考级考官。</p>
@@ -130,7 +148,8 @@ const teachers = ref([
     <li>参编著作三部，核心及省级文章10余篇，主持参与科研立项10余项。</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '孙海', avatar: '孙海.png', details: `<div>
   <p>哈尔滨工程大学，副教授，博士生导师，本科生院街舞团负责教师。霹雳舞舞龄 20 余年，哈尔滨 Old School 团队 OF (THE ODDITY FAMILY) 成员。</p>
@@ -163,39 +182,45 @@ const teachers = ref([
     <li>Be the Best 黑龙江街舞大赛 Vol. 2，Breaking 霹雳舞裁判，2022.06</li>
   </ul>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '孙南航', avatar: '孙南航.png', details: `<div>
   <p>一级指挥，现任哈尔滨工程大学国家大学生文化素质教育基地教师，中国音乐家协会会员，中国指挥学会会员，中国民族管弦乐学会会员，中国音乐家协会民族管乐研究会理事，黑龙江省高校美育教育指导委员会委员，哈尔滨音乐家协会理事。</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '王婧', avatar: '王婧.png', details: `<div>
   <p>副教授，硕士研究生。哈尔滨工程大学国家大学生文化素质教育基地美育教研室教师，黑龙江省设计协会视觉传达设计分会副秘书长，省普通高校艺术类统招考试评委。</p>
   <p>省级一流课程负责人，主要研究方向为美育、艺术美学与视觉传达设计。</p>
   <p>在国内重要期刊发表学术论文20余篇，编写书籍5部，主持课题20余项；获得国家奖4项，省级成果奖20余项。</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '王维', avatar: '王维.png', details: `<div>
   <p>副教授，哈尔滨工程大学国家大学生文化素质教育基地教师，毕业于中国音乐学院，黑龙江省九三学社教育文化专门委员会委员，中国高等教育学会美育专业委员会会员、中国合唱协会会员、黑龙江省音乐家协会会员、黑龙江省合唱协会会员。</p>
   <p>哈尔滨工程大学教授合唱团、大学生艺术团“海之韵”合唱团指导教师，常任指挥；校级思政示范课程《合唱基础》负责人。</p>
   <p>曾指导学生参加艺术类比赛获国家级三等奖2项，省部级二十余项，并多次获得优秀指导教师荣誉称号。</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '杨点墨', avatar: '杨点墨.png', details: `<div>
   <p>鲁迅美术学院美术学专业硕士研究生毕业。哈尔滨工程大学国家大学生文化素质教育基地美育教研室教师，助教，大学生书法研习社指导教师。</p>
   <p>曾参与省级课题《鲁艺红色经典美术作品谱系分析》，辽宁省社科院《辽宁省文化事业蓝皮书》美育方向助研员，发表省级期刊论文1篇，担任多个展览的策展人与策展助理等职务。</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
     {
         name: '赵路辉', avatar: '赵路辉.png', details: `<div>
   <p>哈尔滨工程大学素质基地教师，中共党员，副教授，中央音乐学院硕士，首尔大学访问学者，中央音乐学院-世界民族音乐协会黑龙江省负责人。</p>
   <p>发表中文核心、国家级、省级论文十四篇；出版学术著作《东方民间音乐十五讲》一部，2022年被选为黑龙江省在线课程‘中国民族民间音乐’教材；主持省级教改、校级教改各一项，参与省级、校级教改三项。</p>
   <p>2023年12月黑龙江省第七届“大学生艺术展演”-“集体声乐甲组一等奖”-指导教师；2023年《合唱基础》课程获哈工程校级课程思政示范课程建设点。</p>
 </div>
-`, showDetails: false },
+`, showDetails: false
+    },
 ]);
 
 // 获取头像图片的 URL
@@ -207,21 +232,33 @@ const getAvatarUrl = (avatar) => {
 // 加载教师详情
 const loadTeacherDetails = (index) => {
     const teacher = teachers.value[index];
-    // teacher.details = `这是 ${teacher.name} 的详细介绍。`;  // 示例内容
 };
-// const getAvatarUrl = (avatar) => {
-//     return new URL(`../assets/avatars/${avatar}`, import.meta.url).href;
-// };
-
-
 // 切换显示详细信息
 const toggleDetails = (index) => {
     const teacher = teachers.value[index];
     teacher.showDetails = !teacher.showDetails;
 };
+
+const isOpen = ref({
+    teamstructure: false,
+    teachingresources: false
+});
+
+// 切换展开/收起
+const toggleSection = (section) => {
+    isOpen.value[section] = !isOpen.value[section];
+    // 如果展开了“师资力量”板块且滚动过底部，则自动收起
+    if (section === 'teachingresources' && isOpen.value[section]) {
+        setTimeout(() => {
+            document.querySelector(`#teachingresources .toggle-container`).scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+    }
+};
+
 </script>
 
 <style scoped>
+/* 样式 */
 .content-section {
     padding: 50px 20px;
     background-color: #f9f9f9;
@@ -235,6 +272,7 @@ const toggleDetails = (index) => {
 
 .content-section h2 {
     font-size: 2rem;
+    /* margin-bottom: 10px; */
     color: #003366;
 }
 
@@ -252,6 +290,7 @@ const toggleDetails = (index) => {
     /* 自动调整列数和宽度 */
     gap: 20px;
 }
+
 .teacher-box {
     position: relative;
     background-color: #f9f9f9;
@@ -267,10 +306,12 @@ const toggleDetails = (index) => {
     display: flex;
     flex-direction: column;
 }
+
 .teacher-box.expanded {
     height: 500px;
     /* 展开时自动高度 */
 }
+
 .teacher-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -329,6 +370,68 @@ const toggleDetails = (index) => {
     transition: all 0.3s ease;
 }
 
+.toggle-container {
+    margin: 10px auto 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 50%;
+    /* margin-bottom: 10px; */
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.toggle-container i {
+    width: 20px;
+    height: 20px;
+    border-left: 3px solid #007BFF;
+    border-bottom: 3px solid #007BFF;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.toggle-container .expanded {
+    transform: rotate(180deg);
+}
+
+.content-details {
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0 15px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 0%;
+    /* 默认收缩 */
+    padding: 15px;
+    /* 展开时加上内边距 */
+}
+
+.content-details[v-show] {
+    max-height: 2000px;
+    /* 展开时足够大 */
+}
+
+.content-details.v-show {
+    overflow-y: auto;
+    max-height: 2000px;
+    /* 展开时的最大高度 */
+    transition: max-height 0.3s ease-in-out;
+}
+
+.view-details-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 .view-details-btn:hover {
     background-color: #0056b3;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
@@ -360,17 +463,4 @@ const toggleDetails = (index) => {
         /* 小屏幕时自动调整高度 */
     }
 }
-
-/* .teacher-details {
-    padding: 20px;
-    background-color: #fff;
-    border-top: 1px solid #e0e0e0;
-    color: #333;
-    line-height: 1.6;
-} */
-
-.teacher-details h3 {
-    color: #081e36;
-}
-
 </style>
