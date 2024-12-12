@@ -9,7 +9,7 @@ export default defineConfig({
   },
   plugins: [
     vue(), // 使用 Vue 插件
-    process.env.NODE_ENV === 'development' && require('vite-plugin-vue-devtools')(),
+    // process.env.NODE_ENV === 'development' && require('vite-plugin-vue-devtools')(),
   ],
   resolve: {
     alias: {
