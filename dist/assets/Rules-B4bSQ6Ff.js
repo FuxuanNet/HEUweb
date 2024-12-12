@@ -1,0 +1,1 @@
+import{_ as t,c as o,a as s,o as a}from"./index-C1LFxfxf.js";const n={},c={class:"content-section",id:"labs"};function r(l,e){return a(),o("div",c,e[0]||(e[0]=[s("h2",null,"规章制度",-1),s("p",null,"明确的管理制度，确保教学与活动的高效有序进行。",-1)]))}const d=t(n,[["render",r],["__scopeId","data-v-b9aa444e"]]);export{d as default};
