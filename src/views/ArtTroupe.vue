@@ -47,7 +47,7 @@ const clubs = [
 
 // 获取社团对应的图片路径
 function getClubImage(clubName) {
-    const imagePath = import.meta.env.BASE_URL + `src/assets/大学生艺术团-${clubName}figures/1.png`;
+    const imagePath = import.meta.env.BASE_URL + `/assets/大学生艺术团-${clubName}figures/1.png`;
     return imagePath;
 }
 </script>
