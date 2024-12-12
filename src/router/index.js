@@ -49,22 +49,22 @@ const router = createRouter({
     {
       path: '/teaching/courses',
       name: 'TeachingCourses',
-      component: () => import('../views/Teaching/TeachingCourses.vue'),
+      component: () => import('../views/Teaching/Teaching.vue'),
     },
     {
       path: '/teaching/practice',
       name: 'TeachingPractice',
-      component: () => import('../views/Teaching/TeachingPractice.vue'),
+      component: () => import('../views/Teaching/Teaching.vue'),
     },
     {
       path: '/teaching/show',
       name: 'TeachingShow',
-      component: () => import('../views/Teaching/TeachingShow.vue'),
+      component: () => import('../views/Teaching/Teaching.vue'),
     },
     {
       path: '/teaching/competition',
       name: 'TeachingCompetitions',
-      component: () => import('../views/Teaching/TeachingCompetition.vue'),
+      component: () => import('../views/Teaching/Teaching.vue'),
     },
     {
       path: '/art-troupe',
@@ -74,18 +74,18 @@ const router = createRouter({
     {
       path: '/achievements',
       name: 'Achievements',
-      component: () => import('../views/Achievements/Achievements.vue'),
+      component: () => import('../views/Achievements.vue'),
     },
-    {
-      path: '/achievements/summary',
-      name: 'AchievementsSummary',
-      component: () => import('../views/Achievements/Achievements.vue'),
-    },
-    {
-      path: '/achievements/results',
-      name: 'AchievementsResults',
-      component: () => import('../views/Achievements/Achievements.vue'),
-    },
+    // {
+    //   path: '/achievements/summary',
+    //   name: 'AchievementsSummary',
+    //   component: () => import('../views/Achievements.vue'),
+    // },
+    // {
+    //   path: '/achievements/results',
+    //   name: 'AchievementsResults',
+    //   component: () => import('../views/Achievements.vue'),
+    // },
   ],
 })
 

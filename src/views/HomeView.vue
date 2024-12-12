@@ -41,7 +41,7 @@ const blocks = ref([
 
 .hero-section {
   height: 90vh;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url('../assets/主图4.jpg') no-repeat center center/cover;
+  background: linear-gradient(to bottom, rgba(11, 26, 109, 0.1), rgba(11, 26, 109, 0.15)), url('../assets/主图4.jpg') no-repeat center center/cover;
   color: white;
   display: flex;
   flex-direction: column;
@@ -49,6 +49,7 @@ const blocks = ref([
   align-items: center;
   text-align: center;
 }
+
 .hero-section::before {
   content: '';
   position: absolute;
@@ -63,6 +64,7 @@ const blocks = ref([
   z-index: -1;
   /* 将伪元素放置在背景上 */
 }
+
 .hero-section .content h1 {
   font-size: 2.5rem;
   margin: 0;

@@ -2,47 +2,6 @@
     <div>
         <!-- 主图区域 -->
         <div class="hero-section">
-            <!-- 第一块：标题和 LOGO -->
-            <!-- <div class="top-bar">
-                <div class="logo">美育实验教学中心</div>
-                <div class="title">国家大学生文化素质教育基地</div>
-                <div class="school-link">
-                    <a href="http://www.hrbeu.edu.cn/" target="_blank">哈尔滨工程大学官网</a>
-                </div>
-            </div>
-
-            <nav :class="['nav-bar', { 'solid': isScrolled }]">
-                <ul>
-                    <li><router-link to="/">首页</router-link></li>
-                    <li><router-link to="/team/intro">中心介绍</router-link></li>
-                    <li>
-                        <router-link to="/team">中心团队</router-link>
-                        <ul class="dropdown">
-                            <li><router-link to="/team/members">团队构成</router-link></li>
-                            <li><router-link to="/team/intro">人员介绍</router-link></li>
-                        </ul>
-                    </li>
-                    <li><router-link to="/labs">实验室构成</router-link></li>
-                    <li><router-link to="/teachers">教师简介</router-link></li>
-                    <li><router-link to="/rules">规章制度</router-link></li>
-                    <li>
-                        <router-link to="/teaching">实验教学</router-link>
-                        <ul class="dropdown">
-                            <li><router-link to="/teaching/courses">艺术课程</router-link></li>
-                            <li><router-link to="/teaching/practice">艺术实践</router-link></li>
-                        </ul>
-                    </li>
-                    <li><router-link to="/art-troupe">大学生艺术团</router-link></li>
-                    <li>
-                        <router-link to="/achievements">总结与成果</router-link>
-                        <ul class="dropdown">
-                            <li><router-link to="/achievements/summary">年度总结</router-link></li>
-                            <li><router-link to="/achievements/results">教学成果</router-link></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav> -->
-
             <HeaderSection></HeaderSection>
             <div class="content">
                 <h1>欢迎来到美育实验教学中心</h1>
