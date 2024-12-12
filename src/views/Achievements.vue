@@ -423,4 +423,78 @@ const selectArticle = (index) => {
     background: rgba(249, 249, 249, 0.699);
     border-radius: 8px;
 }
+/* 针对屏幕宽度小于等于768px（手机端）进行样式调整 */
+@media (max-width: 768px) {
+
+    /* 侧边栏：在手机端隐藏或调整为顶部导航 */
+    .app {
+        flex-direction: column;
+        /* 垂直排列，侧边栏和内容都变成竖向排列 */
+        height: auto;
+        /* 取消固定高度 */
+    }
+
+    .sidebar {
+        width: 100%;
+        /* 侧边栏宽度改为100% */
+        padding: 10px;
+        box-shadow: none;
+        /* 去掉阴影 */
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        /* 横向排列并换行 */
+        justify-content: center;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        margin: 5px;
+        flex: 1 0 45%;
+        /* 每个列表项宽度适应，确保显示不拥挤 */
+        text-align: center;
+    }
+
+    .sidebar li.active {
+        background-color: #bbbebe;
+        font-weight: bold;
+    }
+
+    /* 文章内容区 */
+    .content {
+        padding: 20px;
+        /* 减小内容的内边距 */
+    }
+
+    .article-title {
+        font-size: 1.5rem;
+        /* 调整标题大小 */
+    }
+
+    .article-body {
+        font-size: 1rem;
+        /* 调整字体大小 */
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+    /* 调整其他内容区域 */
+    .content-section {
+        padding: 20px;
+    }
+
+    .content-section h2 {
+        font-size: 1.6rem;
+        /* 调整小标题大小 */
+    }
+
+    .content-section p {
+        font-size: 0.9rem;
+        /* 调整段落文字大小 */
+    }
+}
 </style>

@@ -133,4 +133,18 @@ function getClubImage(clubName) {
 .reverse-layout .box-image {
     order: 1;
 }
+@media (max-width: 768px){
+    .box {
+        padding: 10px;
+            display: flex;
+            width: 95%;
+            max-width: 1200px;
+            height: auto;
+            background: #f9f9f9;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            margin: 10px 0;
+        }
+}
 </style>

@@ -198,4 +198,78 @@ onUnmounted(() => {
     font-size: 1.2rem;
     margin-top: 20px;
 }
+
+/* 针对屏幕宽度小于等于768px（手机端）进行样式调整 */
+@media (max-width: 768px) {
+
+    /* 主页背景区域 */
+    .hero-section {
+        height: 60vh;
+        /* 调整主图区域的高度 */
+        background-size: cover;
+        /* 保证背景图自适应大小 */
+    }
+
+    .hero-section .content h1 {
+        font-size: 1.8rem;
+        display: none;
+        /* 减小标题字体 */
+    }
+
+    .hero-section .content p {
+        display: none;
+        font-size: 1rem;
+        /* 减小段落字体 */
+        margin-top: 15px;
+    }
+
+    /* 顶部栏 */
+    .top-bar {
+        height: 15vh;
+        /* 增加顶部栏的高度 */
+        flex-direction: column;
+        /* 垂直排列Logo和标题 */
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .top-bar .logo {
+        font-size: 1.2rem;
+        /* 减小Logo字体 */
+    }
+
+    .title {
+        font-size: 1.2rem;
+        /* 减小标题字体 */
+    }
+
+    .school-link a {
+        font-size: 0.9rem;
+        /* 减小链接字体 */
+    }
+
+    /* 导航栏 */
+    .nav-bar {
+        height: 10vh;
+        padding-top: 15vh;
+        /* 调整导航栏的位置 */
+    }
+
+    .nav-bar ul {
+        flex-direction: column;
+        /* 垂直排列导航项 */
+        gap: 15px;
+        /* 垂直间距 */
+    }
+
+    .nav-bar ul li {
+        margin: 0;
+        /* 去掉左右间距 */
+    }
+
+    .nav-bar ul li a {
+        font-size: 1.2rem;
+        /* 增大导航项的字体 */
+    }
+}
 </style>
