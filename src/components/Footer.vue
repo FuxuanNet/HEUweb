@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-// 这里可以根据需要添加JavaScript逻辑
 </script>
 
 <style scoped>
@@ -39,5 +38,24 @@
     display: inline;
     margin:0  50px;
     font-size: 16px;
+}
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .footer p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer p {
+        font-size: 10px;
+        margin: 3px 3px;
+    }
 }
 </style>

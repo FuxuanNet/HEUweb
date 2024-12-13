@@ -5,7 +5,7 @@
 
 
             <div class="logo">
-                <div class = "school">
+                <div class="school">
                     <a href="http://www.hrbeu.edu.cn/" target="_blank">
                         <img src="../assets/校徽及标准字（反白）.png" alt="哈尔滨工程大学" class="school-name school-name-img" />
                     </a>
@@ -103,12 +103,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.school{
+.school {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
 .school-link {
     text-align: center;
     margin-top: 20px;
@@ -261,9 +262,10 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
-    .school-name-font{
+    .school-name-font {
         margin-bottom: 8px;
     }
+
     .top-bar {
         height: 5vh;
         flex-direction: column;
@@ -331,6 +333,13 @@ onUnmounted(() => {
 
     .nav-bar ul li a {
         font-size: 1rem;
+    }
+
+    .header-section {
+        position:relative;
+        top: 0;
+        width: 100%;
+        z-index: 1;
     }
 }
 </style>
