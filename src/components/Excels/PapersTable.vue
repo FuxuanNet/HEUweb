@@ -126,7 +126,7 @@ const papers = [
 
 .table-container {
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-    overflow: hidden;
+    overflow: auto;
     max-height: 0;
     padding: 0 15px;
     background-color: #f7f7f7;
