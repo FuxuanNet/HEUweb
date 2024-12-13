@@ -3,9 +3,9 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-  base: '/HEUweb/',  // 将 'my-repo' 替换成你的 GitHub 仓库名
+  base: '/HEUweb/', // 需要替换成学校的内容
   plugins: [
-    vue(), // 使用 Vue 插件
+    vue(), 
 
   ],
   resolve: {
